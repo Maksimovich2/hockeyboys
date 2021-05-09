@@ -6,6 +6,39 @@
     <link rel="stylesheet" type="text/css" href="mysite.css">
     <link rel="stylesheet" type="text/css" href="http://www.mysite.ru/main.css">
     <style>
+        H2 {
+            font-size: 70%;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            color: #2a2425;
+        }
+    </style>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 19px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        .button5 {
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+        }
+
+        .button5:hover {
+            background-color: #555555;
+            color: white;
+        }
+    </style>
+    <style>
         H1 {
 
             font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -13,17 +46,18 @@
         }
     </style>
 </head>
+<div style="text-align:center">
+<h1><label>Введите данные</label></h1>
 <body>
 <form action="#" th:action="@{/user-create}" th:object="${user}" method="post">
-    <h1>
-        <label for="firstName">Имя</label>
-    </h1>
+        <h2><label for="firstName">Имя</label></h2>
   <input type="text" th:field="*{firstName}" id="firstName" placeholder="Имя" required>
-  <label for="lastName">Фамилия</label>
+ <h2><label for="lastName">Фамилия</label></h2>
   <input type="text" th:field="*{lastName}" id="lastName" placeholder="Фамилия" required>
-    <label for="numberJ">Номер игрока</label>
+   <h2><label for="numberJ">Номер игрока</label></h2>
     <input type="number" th:field="*{numberJ}" id="numberJ" placeholder="Номер" required>
-  <input type="submit" value="Добавить игрока">
+    <br />
+    <button class="button button5">Добавить игрока</button>
 </form>
 </body>
 </html>

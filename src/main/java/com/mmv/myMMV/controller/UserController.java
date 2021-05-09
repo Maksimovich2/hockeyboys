@@ -58,4 +58,9 @@ public class UserController {
         userService.updateUser(user);
         return "redirect:/users";
     }
+    @GetMapping("/user-search")
+    public String searchUser(String lastName){
+        userService.searchUser(lastName);
+        return "user-search";
+    }
 }

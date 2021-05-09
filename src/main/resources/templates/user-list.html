@@ -2,20 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HockeyPlayers</title>
+    <title>Игроки</title>
   <link rel="stylesheet" type="text/css" href="mysite.css">
   <link rel="stylesheet" type="text/css" href="http://www.mysite.ru/main.css">
-  <style>h3 p {
-    text-align: center;
-  }</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    .text {
-      text-align:  center;
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+      background-color: red;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+  <style>
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: solid black;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    .button5 {
+      background-color: white;
+      color: black;
+      border: 2px solid #555555;
+    }
+
+    .button5:hover {
+      background-color: #555555;
+      color: white;
+    }
+    .button4 {
+      padding: 10px 20px;
+      font-size: 12px;
+      background-color: white;
+      color: black;
+      border: 2px solid #555555;
+    }
+
+    .button4:hover {
+      padding: 10px 20px;
+      font-size: 12px;
+      background-color: #555555;
+      color: white;
     }
   </style>
   <style>
     H1 {
       font-size: 90%;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      color: #515366;
+    }
+  </style>
+  <style>
+    H4 {
+      font-size: 115%;
       font-family: Verdana, Arial, Helvetica, sans-serif;
       color: #515366;
     }
@@ -29,11 +131,31 @@
   </style>
 </head>
 <body>
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+</div>
+<h4><label>Поиск игрока(по фамилии)</label></h4>
+<p><a href="/user-search"><button class="button button4">Найти</button></a></p>
+</body>
+<div style="text-align:center">
+<body>
+
 <div th:switch="${users}">
   <h2 th:case="null">No players found!</h2>
   <div th:case="*">
     <h2>Игроки</h2>
-    <table>
+    <table  bordercolor="black" border="5" width="100%" bgcolor="silver" summary="Hockey Players" align="left | center | right">
       <thead>
       <tr>
         <th><h1>Имя</h1></th>
@@ -45,15 +167,18 @@
       <h3> <tr th:each="user : ${users}">
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
-        <td th:text="${user.numberJ}"></td>
-        <td><a th:href="@{user-update/{id}(id=${user.id})}"><button>Редактировать</button></a></td>
-        <td><a th:href="@{user-delete/{id}(id=${user.id})}"><button>Удалить</button></a></td>
+        <td th:text="${user.numberJ}" align="center"></td>
+        <td><a th:href="@{user-update/{id}(id=${user.id})}"><div style="text-align:center">
+          <button>&#9998;</button>
+        </div>  </a></td>
+        <td><a th:href="@{user-delete/{id}(id=${user.id})}"><div style="text-align:center">
+          <button>&#10006;</button>
+        </div>  </a></td>
       </h3></tr>
-
       </tbody>
     </table>
   </div>
-  <p><a href="/user-create"><button>Добавить игрока</button></a></p>
+  <p><a href="/user-create"><button class="button button5">Добавить игрока</button></a></p>
 </div>
 </body>
 </html>
