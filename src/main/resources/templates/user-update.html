@@ -2,20 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create player</title>
+    <title>Добавить игрока</title>
+  <link rel="stylesheet" type="text/css" href="mysite.css">
+  <link rel="stylesheet" type="text/css" href="http://www.mysite.ru/main.css">
 </head>
 <body>
 <form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
   <label for="id">ID</label>
   <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
   <br/>
-  <label for="firstName">First name</label>
-  <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
+  <label for="firstName">Имя</label>
+  <input type="text" th:field="*{firstName}" id="firstName" placeholder="Имя">
   <br/>
-  <label for="lastName">Last name</label>
-  <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+  <label for="lastName">Фамилия</label>
+  <input type="text" th:field="*{lastName}" id="lastName" placeholder="Фамилия">
   <br/>
-  <input type="submit" value="Update User">
+  <label for="numberJ">Номер игрока</label>
+  <input type="number" th:field="*{numberJ}" id="numberJ" placeholder="Номер">
+  <br/>
+  <button>Изменить</button>
 </form>
 </body>
 </html>

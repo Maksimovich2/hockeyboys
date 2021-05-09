@@ -3,32 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>HockeyPlayers</title>
+  <link rel="stylesheet" type="text/css" href="mysite.css">
+  <link rel="stylesheet" type="text/css" href="http://www.mysite.ru/main.css">
+  <style>h3 p {
+    text-align: center;
+  }</style>
+  <style>
+    .text {
+      text-align:  center;
+    }
+  </style>
+  <style>
+    H1 {
+      font-size: 90%;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      color: #515366;
+    }
+  </style>
+  <style>
+    H2 {
+      font-size: 180%;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      color: #433366;
+    }
+  </style>
 </head>
 <body>
 <div th:switch="${users}">
-  <h2 th:case="null">No users found!</h2>
+  <h2 th:case="null">No players found!</h2>
   <div th:case="*">
-    <h2>Players</h2>
+    <h2>Игроки</h2>
     <table>
       <thead>
       <tr>
-        <th>Id</th>
-        <th>First name</th>
-        <th>Last name</th>
+        <th><h1>Имя</h1></th>
+        <th><h1>Фамилия</h1></th>
+        <th><h1>Номер игрока</h1></th>
       </tr>
       </thead>
       <tbody>
-      <tr th:each="user : ${users}">
-        <td th:text="${user.id}"></td>
+      <h3> <tr th:each="user : ${users}">
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
-        <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
-        <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
-      </tr>
+        <td th:text="${user.numberJ}"></td>
+        <td><a th:href="@{user-update/{id}(id=${user.id})}"><button>Редактировать</button></a></td>
+        <td><a th:href="@{user-delete/{id}(id=${user.id})}"><button>Удалить</button></a></td>
+      </h3></tr>
+
       </tbody>
     </table>
   </div>
-  <p><a href="/user-create">Create player</a></p>
+  <p><a href="/user-create"><button>Добавить игрока</button></a></p>
 </div>
 </body>
 </html>

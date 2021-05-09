@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -27,6 +28,17 @@ public class UserService {
 
     public User saveUser(User user){
         return userRepository.save(user);
+    }
+    public User updateUser(User user){
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        if(userOptional.isPresent()){
+            User userFromDataBase = userOptional.get();
+            userFromDataBase.setFirstName(user.getFirstName());
+            userFromDataBase.setLastName(user.getLastName());
+            userFromDataBase.setNumberJ(user.getNumberJ());
+            return userRepository.save(userFromDataBase);
+        }
+        return null;
     }
 
     public void deleteById(Long id){

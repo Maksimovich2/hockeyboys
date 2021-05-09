@@ -2,15 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create player</title>
+    <title>Добавить игрока</title>
+    <link rel="stylesheet" type="text/css" href="mysite.css">
+    <link rel="stylesheet" type="text/css" href="http://www.mysite.ru/main.css">
+    <style>
+        H1 {
+
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            color: #333366;
+        }
+    </style>
 </head>
 <body>
 <form action="#" th:action="@{/user-create}" th:object="${user}" method="post">
-  <label for="firstName">First name</label>
-  <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
-  <label for="lastName">Last name</label>
-  <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
-  <input type="submit" value="Create User">
+    <h1>
+        <label for="firstName">Имя</label>
+    </h1>
+  <input type="text" th:field="*{firstName}" id="firstName" placeholder="Имя" required>
+  <label for="lastName">Фамилия</label>
+  <input type="text" th:field="*{lastName}" id="lastName" placeholder="Фамилия" required>
+    <label for="numberJ">Номер игрока</label>
+    <input type="number" th:field="*{numberJ}" id="numberJ" placeholder="Номер" required>
+  <input type="submit" value="Добавить игрока">
 </form>
 </body>
 </html>
