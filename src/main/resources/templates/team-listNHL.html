@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Команды НХЛ</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>city</th>
+        <th>count members</th>
+
+    </tr>
+    <tr th:each = "team: ${leagues}">
+        <td th:text="${leagues.idLeagues}">
+        <td th:text="${leagues.leaguesName}"></td>
+        <td th:text="${leagues.country}"></td>
+        <td th:text="${leagues.countMembers}"></td>
+    </tr>
+</table>
+</body>
+</html>

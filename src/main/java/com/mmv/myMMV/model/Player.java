@@ -11,15 +11,17 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "player")
+public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "surname")
+    private String surname;
+    @Column(name = "age")
+    private String age;
     @Column(name = "number")
-    private String numberJ;
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "las_name")
-    private String lastName;
+    private String number;
 }

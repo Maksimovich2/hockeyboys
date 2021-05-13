@@ -1,7 +1,7 @@
 package com.mmv.myMMV.controller;
 
-import com.mmv.myMMV.model.User;
-import com.mmv.myMMV.service.UserService;
+import com.mmv.myMMV.model.Player;
+import com.mmv.myMMV.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,30 +13,30 @@ import java.util.List;
 
 @Controller
 
-public class UserController {
+public class PlayerController {
 
-    private final UserService userService;
+    private final PlayerService userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public PlayerController(PlayerService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/users")
     public String findAll(Model model){
-        List<User> users = userService.findAll();
+        List<Player> users = userService.findAll();
         model.addAttribute("users", users);
         return "user-list";
     }
 
     @GetMapping("/user-create")
-    public String createUserForm(User user){
+    public String createUserForm(Player player){
         return "user-create";
     }
 
     @PostMapping("/user-create")
-    public String createUser(User user){
-        userService.saveUser(user);
+    public String createUser(Player player){
+        userService.savePlayer(player);
         return "redirect:/users";
     }
 
@@ -48,19 +48,19 @@ public class UserController {
 
     @GetMapping("/user-update/{id}")
     public String updateUserForm(@PathVariable("id") Long id, Model model){
-        User user = userService.findById(id);
-        model.addAttribute("user", user);
+        Player player = userService.findById(id);
+        model.addAttribute("user", player);
         return "user-update";
     }
 
     @PostMapping("/user-update")
-    public String updateUser(User user){
-        userService.updateUser(user);
+    public String updateUser(Player player){
+        userService.updatePlayer(player);
         return "redirect:/users";
     }
     @GetMapping("/user-search")
     public String searchUser(String lastName){
-        userService.searchUser(lastName);
+        userService.searchPlayer(lastName);
         return "user-search";
     }
 }
